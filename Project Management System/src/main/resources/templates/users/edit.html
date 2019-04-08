@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>User Update</title>
+</head>
+<body>
+<div class="content" layout:fragment="custom-content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Role</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Role</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Edit</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Update Role</div>
+                            </div>
+
+                            <form th:object="${user}" th:action="@{/user/edit/}+${id}" th:method="POST" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="firstName">First Name</label>
+                                                <input type="text" th:field="*{firstName}" class="form-control" id="firstName">
+                                                <span th:class="err" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">firstName Error</span>
+                                                <small id="firstNameHelp" class="form-text text-muted">Enter Role At least 4
+                                                    Characters.
+                                                </small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" th:field="*{email}" class="form-control" id="email">
+                                                <span th:class="err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</span>
+                                                <small id="emailHelp" class="form-text text-muted">Enter email At least 4
+                                                    Characters.
+                                                </small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="mobile">Mobile</label>
+                                                <input type="text" th:field="*{mobile}" class="form-control" id="mobile">
+                                                <span th:class="err" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Mobile Error</span>
+                                                <small id="mobileHelp" class="form-text text-muted">Enter Role At least 4
+                                                    Characters.
+                                                </small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="file">Photo</label>
+                                                <input type="file" name="file" class="form-control" id="file">
+
+                                                <small id="fileHelp" class="form-text text-muted">Enter jpa, png
+                                                    Characters.
+                                                </small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                    <button type="submit" class="btn btn-success">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+</body>
+</html>

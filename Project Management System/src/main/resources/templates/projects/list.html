@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutlist.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Project List</title>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+</head>
+<body>
+<div class="content" layout:fragment="custom-content">
+
+    <div class="page-inner">
+        <div class="page-header">
+            <h4 class="page-title">Projects</h4>
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="#">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Project</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">List</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Project List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Title</th>
+                                    <th>PM</th>
+                                    <th>Team Lead</th>
+                                    <th>Consultant</th>
+                                    <th>Client</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Health</th>
+                                    <th>Edit</th>
+                                    <th>Del</th>
+                                    <th>Details</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="project : ${list}">
+                                    <td th:text="${company.id}"></td>
+                                    <td th:text="${company.companyName}"></td>
+                                    <td th:text="${company.email}"></td>
+                                    <td th:text="${company.mobile}"></td>
+                                    <td><img th:src="${company.filePath}" width="100" height="100"/> </td>
+                                    <td>
+                                        <a th:href="@{'/project/edit/'+${company.id}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{'/project/del/'+${company.id}}"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{'/project/view/'+${company.id}}"><i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Title</th>
+                                    <th>PM</th>
+                                    <th>Team Lead</th>
+                                    <th>Consultant</th>
+                                    <th>Client</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Health</th>
+                                    <th>Edit</th>
+                                    <th>Del</th>
+                                    <th>Details</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--inner block end here-->
+
+</body>
+</html>

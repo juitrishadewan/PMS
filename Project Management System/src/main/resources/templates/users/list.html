@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutlist.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+
+     <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+</head>
+<body>
+<div class="content" layout:fragment="custom-content">
+
+    <div class="page-inner">
+        <div class="page-header">
+            <h4 class="page-title">Users</h4>
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="#">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">User</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">List</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">User List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Name</th>
+                                    <th>User Name</th>
+                                    <th>Roles</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Company</th>
+                                    <th>Photo</th>
+                                    <th>Edit</th>
+                                    <th>Del</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="user : ${list}">
+                                    <td th:text="${user.id}"></td>
+                                    <td th:text="${user.firstName}+' '+${user.lastName}"></td>
+                                    <td th:text="${user.userName}"></td>
+                                    <td >
+                                        <span th:each="role : ${user.roles}" th:text="${role.roleName}+'  '"></span>
+                                    </td>
+                                    <td th:text="${user.email}"></td>
+                                    <td th:text="${user.mobile} ?: '0000-000000'"></td>
+                                    <td th:text="${user.company.companyName} ?: 'PMS Inc'"></td>
+                                    <td><img th:src="${user.filePath}" height="100" width="100" th:alt="${user.lastName}"/>  </td>
+                                    <td>
+                                        <a th:href="@{'/user/edit/'+${user.id}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{'/user/del/'+${user.id}}"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>SL. No</th>
+                                    <th>Name</th>
+                                    <th>User Name</th>
+                                    <th>Roles</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Company</th>
+                                    <th>Photo</th>
+                                    <th>Edit</th>
+                                    <th>Del</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--inner block end here-->
+
+</body>
+</html>
